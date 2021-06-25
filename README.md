@@ -68,14 +68,14 @@ url_list.append(url_each)
 r = requests.get(url_each)
 page = r.content
 ```
-10. In order to understand which information you need from the content, go to the wanted page (the result page) and right click “View page source”. You will see <html> of the page (which is the content) and find the wanted type (<a>, <p>, <h1> etc) of the information. For example, in news websites, each news has a title in <a> tag with a link attached to it (href component of <a> tag). Now, use the following easy lines of code to get the wanted section.
+10. In order to understand which information you need from the content, go to the wanted page (the result page) and right click “View page source”. You will see "html" of the page (which is the content) and find the wanted type (html tag type) of the information. For example, in news websites, each news has a title in <a> tag with a link attached to it (href component of "anchor" tag). Now, use the following easy lines of code to get the wanted section.
 ```
 soup = BeautifulSoup(page, 'html5lib')
 news = soup.find_all('a', class_='news_title')
 ```
 Please note that these parameters (tag type, class name) depend on the website you are scraping. 
 11. You can manage the data as you want, but in our case, we saved data regarding each keyword as an object. Then, we combined data for all keywords, which resulted in a big array that will be used as an output dataframe.
-Import Pandas Library to work with data frames. Save the resultant big array as a dataframe using the installed library. 
+12. Import Pandas Library to work with data frames. Save the resultant big array as a dataframe using the installed library. 
 ```
 import pandas as pd
 table =  pd.DataFrame(big_list)
@@ -84,51 +84,46 @@ table =  pd.DataFrame(big_list)
 Well done on preparing the data output! Now it is time to connect the Jupyter Notebook to Google Sheets.
 	
 ## Part Three: Connecting Jupyter Notebook with Google Sheets
-To login into Google Sheets using Jupyter Notebook, install the following libraries.
+1. To login into Google Sheets using Jupyter Notebook, install the following libraries.
+```
 import gspread
 from df2gspread import df2gspread as d2g
-
-
-Get your Google API credentials and authorize into your Google Account.
+```
+2. Get your Google API credentials and authorize into your Google Account.
+```
 from oauth2client.service_account import ServiceAccountCredentials
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
 credentials = ServiceAccountCredentials.from_json_keyfile_name('./YOUR CREDENTIALS FILE.json', scope) 
 gc = gspread.authorize(credentials)
-
-
-
-	
+```
 Important note: all your Python files should be in the same folder as your credentials key file (.json). If it shows an error at this stage, go to your Google Developer Console and check if both Google Drive and Google Sheets APIs are enabled in your project.
-
-Create a google spreadsheet file and share it with the service account email you created before. To see the service account email, open the credentials key .json file and look for “client_email”.
-
-Now you will upload your dataframe (big table) into the Google Sheets using the following command
+3. Create a google spreadsheet file and share it with the service account email you created before. To see the service account email, open the credentials key .json file and look for “client_email”.
+4. Now you will upload your dataframe (big table) into the Google Sheets using the following command
+```
 d2g.upload(table, spreadsheet_key, s_name, credentials=credentials)
-
-
+```
 Let’s go one by one for each variable,
-table => dataframe you created in Step 12 of Part 2.
-spreadsheet_key => Open your google spreadsheet and look at the URL.
+- table => dataframe you created in Step 12 of Part 2.
+- spreadsheet_key => Open your google spreadsheet and look at the URL.
 The spreadsheet_key is basically the highlighted part of the URL as shown below.
 https://docs.google.com/spreadsheets/d/1..longstringofletters..w/edit..
 So it is a string of letters and numbers which come after “/d/” and before “/edit..” parts.
-s_name => spreadsheet name, you can define as any string (for example, s_name = “TEST”)
-credentials =>  your Google API credentials, which you defined in Step 2 of Part 3.
+- s_name => spreadsheet name, you can define as any string (for example, s_name = “TEST”)
+- credentials =>  your Google API credentials, which you defined in Step 2 of Part 3.
 
-You can define optional variables if you want to to change upload method, see more here (https://df2gspread.readthedocs.io/en/latest/examples.html) 
+You can define optional variables if you want to to change upload method, see more [here](https://df2gspread.readthedocs.io/en/latest/examples.html). 
 
 If there are no errors, Jupyter displays the following message: 
-
+```
 <Worksheet ‘TEST’ id:123..example..123>
-
+```
 Great job!
 Now go to the spreadsheet you created and you can see your “TEST” spreadsheet and the dataframe in it. 
 
-Finito~
+> Finito~
 
-Please see the full code here: https://github.com/punchkorea/Jupyter-to-GoogleSheets 
-
+Please see full post [on our Blog](https://punchkorea.com/automate-the-collection-of-naver-news-articles-with-keywords-in-google-sheets/).
 
 
 
