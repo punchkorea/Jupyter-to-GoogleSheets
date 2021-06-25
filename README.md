@@ -53,38 +53,37 @@ import numpy as np
 ```
 keywords = [“AI”, “neuralink”, “deep+learning”
 ```
-
-
-Go to the desired website and type “EXAMPLE” in the search bar. Here you can apply all sorting needed, for example “Newest” or “Popular” etc. Copy the result page url. 
+8. Go to the desired website and type “EXAMPLE” in the search bar. Here you can apply all sorting needed, for example “Newest” or “Popular” etc. Copy the result page url. 
 For example, you get the URL as: 
 https://search.naver.com/…...s&query=EXAMPLE&sm=tab_….
-In the url, you can see your EXAMPLE word as equals to “query”. This is the place where you can put any other keyword and save the url for each keyword. We used for loop and concatenate the URL string
-
+In the URL, you can see your EXAMPLE word as equals to “query”. This is the place where you can put any other keyword and save the url for each keyword. We used for loop and concatenate the URL string
+```
 url_list = []
 for n in np.arange(0, len(keywords)):
 url_each = "https://m.search.naver.com/..query="+keywords[n]+"&..."
 url_list.append(url_each)
-
-
-Now when you have all URLs from which to get data, use the following commands to retrieve content of the page.
+```
+9. Now when you have all URLs from which to get data, use the following commands to retrieve content of the page.
+```
 r = requests.get(url_each)
 page = r.content
-
-
-In order to understand which information you need from the content, go to the wanted page (the result page) and right click “View page source”. You will see <html> of the page (which is the content) and find the wanted type (<a>, <p>, <h1> etc) of the information. For example, in news websites, each news has a title in <a> tag with a link attached to it (href component of <a> tag). Now, use the following easy lines of code to get the wanted section. 
+```
+10. In order to understand which information you need from the content, go to the wanted page (the result page) and right click “View page source”. You will see <html> of the page (which is the content) and find the wanted type (<a>, <p>, <h1> etc) of the information. For example, in news websites, each news has a title in <a> tag with a link attached to it (href component of <a> tag). Now, use the following easy lines of code to get the wanted section.
+```
 soup = BeautifulSoup(page, 'html5lib')
-news = soup.find_all('a', class_='news_tit')
-
-
+news = soup.find_all('a', class_='news_title')
+```
 Please note that these parameters (tag type, class name) depend on the website you are scraping. 
-You can manage the data as you want, but in our case, we saved data regarding each keyword as an object. Then, we combined data for all keywords, which resulted in a big array that will be used as an output dataframe.
+11. You can manage the data as you want, but in our case, we saved data regarding each keyword as an object. Then, we combined data for all keywords, which resulted in a big array that will be used as an output dataframe.
 Import Pandas Library to work with data frames. Save the resultant big array as a dataframe using the installed library. 
+```
 import pandas as pd
 table =  pd.DataFrame(big_list)
+```
 
-	
 Well done on preparing the data output! Now it is time to connect the Jupyter Notebook to Google Sheets.
-Part Three: Connecting Jupyter Notebook with Google Sheets
+	
+## Part Three: Connecting Jupyter Notebook with Google Sheets
 To login into Google Sheets using Jupyter Notebook, install the following libraries.
 import gspread
 from df2gspread import df2gspread as d2g
