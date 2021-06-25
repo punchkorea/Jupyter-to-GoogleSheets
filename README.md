@@ -2,7 +2,7 @@
 
 > Please replace "daily-articles.json" file with your Google API credential file.
 
-## Why scrape news articles?
+## :newspaper: Why scrape news articles? 
 
 You may have a need for being updated about the latest news in your professional field or a specific topic of interest. The conventional way of opening a news website, typing your field of interest, scrolling through all news feeds, opening the same links again and again, and saving some useful links in separate files can be quite repetitive for daily usage. Thus, we attempted to automate this process using simple and open source tools such as Jupyter Notebook to run Python code and Google Sheets, where we can save all necessary data in a visually appealing way.
 
@@ -11,7 +11,7 @@ In Part One, we will share how to create Google API credentials in order to acce
 In Part Two, we will discuss how to do web scraping in Python in Jupyter Notebook.
 In Part Three, we will connect output data and Google Sheets in order to save the data for further analysis and displaying. 
 
-## Part One: Google API credentials creation
+## :page_facing_up: Part One: Google API credentials creation
 
 1. Create a Google Account if you do not have one.
 2. Open Google Developer Console.
@@ -31,7 +31,7 @@ In case it did not download automatically, go to the KEYS tab and download the k
 
 Well done! You have your Google API credentials ready and now let’s get into coding!
 
-## Part Two: Web Scraping using Python
+## :dart: Part Two: Web Scraping using Python
 1. Install Jupyter Notebook to run [Python](https://jupyter.org/install) 
 2. In order to get information from a webpage, we need to install web scraping libraries, and we used [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)  due to its easy usage. 
 3. Run the following command from cmd/terminal.
@@ -83,7 +83,7 @@ table =  pd.DataFrame(big_list)
 
 Well done on preparing the data output! Now it is time to connect the Jupyter Notebook to Google Sheets.
 	
-## Part Three: Connecting Jupyter Notebook with Google Sheets
+## :dizzy: Part Three: Connecting Jupyter Notebook with Google Sheets
 1. To login into Google Sheets using Jupyter Notebook, install the following libraries.
 ```
 import gspread
