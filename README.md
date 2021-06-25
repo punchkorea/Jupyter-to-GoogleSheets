@@ -118,7 +118,7 @@ If there are no errors, Jupyter displays the following message:
 ```
 <Worksheet ‘TEST’ id:123..example..123>
 ```
-Great job!
+:white_check_mark: Great job!
 Now go to the spreadsheet you created and you can see your “TEST” spreadsheet and the dataframe in it. 
 
 > Finito~
