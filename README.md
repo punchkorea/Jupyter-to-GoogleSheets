@@ -1,7 +1,6 @@
 # Automate the collection of Naver News articles with keywords in Google Sheets using Python
 
-Please replace "daily-articles.json" file with your Google API credential file.
-Automate the collection of Naver News articles with keywords in Google Sheets
+##### Please replace "daily-articles.json" file with your Google API credential file.
 
 ## Why scrape news articles?
 
@@ -15,56 +14,45 @@ In Part Three, we will connect output data and Google Sheets in order to save th
 ## Part One: Google API credentials creation
 
 1. Create a Google Account if you do not have one.
-Open Google Developer Console.
-Create a New Project by clicking on “Create Project” button,
-
+2. Open Google Developer Console.
+3. Create a New Project by clicking on “Create Project” button,
 Type your project name and ID (it cannot be changed after this stage) and click “Create”
-
-Open your Project (refresh page if you do not see it) and click API -> Dashboard
-
-
-In the APIs Dashboard, click “Enable APIs” to enable all required APIs.
-
-
+4. Open your Project (refresh page if you do not see it) and click API -> Dashboard
+5. In the APIs Dashboard, click “Enable APIs” to enable all required APIs.
 New page is opened, where you can type “Google Drive API” and “Google Sheets API”.
 Enable both APIs.
-
-
-After enabling Google Drive API, go to the “Credentials” section and click “Create Credentials” -> “Service Account”. 
+6. After enabling Google Drive API, go to the “Credentials” section and click “Create Credentials” -> “Service Account”. 
 We need to create these credentials to use them to access Google Sheets from Jupyter Notebook. 
-
-
-
-Start creating credentials. Type any name and skip (if you want) optional settings. 
+7. Start creating credentials. Type any name and skip (if you want) optional settings. 
 For the role, you can select “Owner” to have full access (for your usage only).
-After you create the credentials, you can see them in the “Service Accounts” sections. Now in order to access the key, go to the “Manage Keys” section.
-Create a key for this service account. Select “json” as the type of the file. When you create a key, it will automatically download the key. 
-
-
-In case it did not download automatically, go to the KEYS tab and download the key manually. The key is basically a .json format file which has all credential information of a service account. The content of the key is as following:
+8. After you create the credentials, you can see them in the “Service Accounts” sections. Now in order to access the key, go to the “Manage Keys” section.
+9. Create a key for this service account. Select “json” as the type of the file. When you create a key, it will automatically download the key. 
+In case it did not download automatically, go to the KEYS tab and download the key manually. The key is basically a .json format file which has all credential information of a service account. The content of the key is as in daily-articles.json file.
 
 Well done! You have your Google API credentials ready and now let’s get into coding!
-Part Two: Web Scraping using Python
-Install Jupyter Notebook to run Python (https://jupyter.org/install) 
-In order to get information from a webpage, we need to install web scraping libraries, and we used BeautifulSoup due to its easy usage. (https://www.crummy.com/software/BeautifulSoup/bs4/doc/) 
-Run the following command from cmd/terminal.
+
+## Part Two: Web Scraping using Python
+1. Install Jupyter Notebook to run [Python](https://jupyter.org/install) 
+2. In order to get information from a webpage, we need to install web scraping libraries, and we used [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)  due to its easy usage. 
+3. Run the following command from cmd/terminal.
+```
 pip install beautifulsoup4
-
-
-Install Requests to access <html> code of the webpage.
-Run the following command from cmd/terminal.
+```
+4. Install Requests to access <html> code of the webpage. Run the following command from cmd/terminal.
+```
 pip install requests
-
-
-Now when you have the environment installed, create a blank python file.
-Import all our libraries. We will need numpy to manipulate the data. 
+```
+5. Now when you have the environment installed, create a blank python file.
+6. Import all our libraries. We will need numpy to manipulate the data. 
+```
 import requests
 from bs4 import BeautifulSoup
 import numpy as np
-
-
-Define you keywords as an array, For example:
-keywords = [“AI”, “neuralink”, “deep+learning”]
+```
+7. Define you keywords as an array, For example:
+```
+keywords = [“AI”, “neuralink”, “deep+learning”
+```
 
 
 Go to the desired website and type “EXAMPLE” in the search bar. Here you can apply all sorting needed, for example “Newest” or “Popular” etc. Copy the result page url. 
