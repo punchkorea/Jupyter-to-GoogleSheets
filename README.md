@@ -1,4 +1,6 @@
 <link rel ="canonical" href="https://punchkorea.com/automate-naver-news-keywords-sheets/" />
+
+.
 # Automate the collection of Naver News articles with keywords in Google Sheets using Python
 
 > Please replace "daily-articles.json" file with your Google API credential file.
