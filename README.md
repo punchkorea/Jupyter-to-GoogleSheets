@@ -123,7 +123,7 @@ Now go to the spreadsheet you created and you can see your “TEST” spreadshee
 
 > Finito~
 
-:heart: Please see full post [on our Blog](https://punchkorea.com/automate-the-collection-of-naver-news-articles-with-keywords-in-google-sheets/).
+:heart: Please see full post [on our Blog](https://punchkorea.com/automate-naver-news-keywords-sheets/).
 
 
 
