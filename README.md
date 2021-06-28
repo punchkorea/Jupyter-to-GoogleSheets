@@ -1,6 +1,13 @@
-<link rel ="canonical" href="https://punchkorea.com/automate-naver-news-keywords-sheets/" />
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Page</title>
+	<link rel ="canonical" href="https://punchkorea.com/automate-naver-news-keywords-sheets/" />
+</head>
+<body>
 
-.
+
 # Automate the collection of Naver News articles with keywords in Google Sheets using Python
 
 > Please replace "daily-articles.json" file with your Google API credential file.
@@ -129,5 +136,6 @@ Now go to the spreadsheet you created and you can see your “TEST” spreadshee
 :heart: Please see full post [on our Blog](https://punchkorea.com/automate-naver-news-keywords-sheets/).
 
 
-
+</body>
+</html>
 
