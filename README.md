@@ -2,7 +2,6 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Page</title>
 	<link rel ="canonical" href="https://punchkorea.com/automate-naver-news-keywords-sheets/" />
 </head>
 <body>
